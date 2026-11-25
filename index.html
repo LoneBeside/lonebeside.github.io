@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ℒone། Besidℓ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8.5 5.2v13.6L19.5 12z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5.5v13M15 5.5v13"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M6.8 5v14"/><path d="M18.5 5.8v12.4L10 12z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M17.2 5v14"/><path d="M5.5 5.8v12.4L14 12z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2S4.3 15.4 4.3 10.3A4.5 4.5 0 0 1 12 7.1a4.5 4.5 0 0 1 7.7 3.2c0 5.1-7.7 9.9-7.7 9.9z"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.8 4.5h10.4v15.2L12 15.8l-5.2 3.9z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.8v10.4"/><path d="M8.2 10.6 12 14.4l3.8-3.8"/><path d="M4.8 19.4h14.4"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 19.4V9"/><path d="M8.2 12.8 12 9l3.8 3.8"/><path d="M4.8 19.4h14.4"/></symbol>
+  <symbol id="i-comment" viewBox="0 0 24 24"><path d="M20 14.8a2.2 2.2 0 0 1-2.2 2.2H9l-5 3.4V6.4A2.4 2.4 0 0 1 6.4 4h11.4A2.2 2.2 0 0 1 20 6.2z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.2"/><path d="m15.6 15.6 3.8 3.8"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4.5 19.5h4L20 8l-4-4L4.5 15.5z"/><path d="m14 6 4 4"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 10v4h3.2L12 18.4V5.6L7.2 10z"/><path d="M15.6 9.4a3.6 3.6 0 0 1 0 5.2"/><path d="M18.2 7a7.2 7.2 0 0 1 0 10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="m15 9-2.1 5-3.9 1.4L11.2 10z"/></symbol>
+  <symbol id="i-lines" viewBox="0 0 24 24"><path d="M5 8.2h14M5 12h10.5M5 15.8h14"/></symbol>
+  <symbol id="i-note" viewBox="0 0 24 24"><path d="M9.4 17.6V6.8l9-2v10.8"/><circle cx="7" cy="17.8" r="2.4"/><circle cx="16.4" cy="15.6" r="2.4"/></symbol>
+  <symbol id="i-disc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="2.2"/></symbol>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="glow glow-a" aria-hidden="true"></div>
+<div class="glow glow-b" aria-hidden="true"></div>
+
+<div class="app" id="app">
+
+  <aside class="rail">
+    <div class="brand" title="ℒone། Besidℓ">
+      <span class="brand-mark">ℒ</span>
+      <span class="brand-word">Lone</span>
+    </div>
+
+    <nav class="rail-nav" aria-label="主导航">
+      <button class="rail-item is-active" data-view="all" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg>
+        <span>发现</span>
+      </button>
+      <button class="rail-item" data-view="favs" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-bookmark"/></svg>
+        <span>收藏</span>
+      </button>
+      <button class="rail-item" data-view="mine" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-note"/></svg>
+        <span>我的</span>
+      </button>
+      <button class="rail-item" id="railUpload" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-upload"/></svg>
+        <span>上传</span>
+      </button>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="me-dot">Y</div>
+    </div>
+  </aside>
+
+  <main class="stage" id="stage">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow"><span class="eyebrow-line"></span>Private listening room</p>
+        <h1 class="hero-title">ℒone། Besidℓ</h1>
+        <p class="hero-sub">在同一面镜子里，听两个人的回声。<br>歌曲、字幕、♡ 与留言，都留在这里。</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="heroPlay" type="button">
+            <svg class="ic" viewBox="0 0 24 24"><use href="#i-play"/></svg>
+            <span id="heroPlayText">开始聆听</span>
+          </button>
+          <button class="btn btn-ghost" id="heroUpload" type="button">
+            <svg class="ic" viewBox="0 0 24 24"><use href="#i-upload"/></svg>
+            <span>上传歌曲</span>
+          </button>
+        </div>
+        <div class="hero-stats">
+          <span><b id="statTracks">0</b> 首曲目</span>
+          <i></i>
+          <span><b id="statLikes">0</b> 喜欢</span>
+          <i></i>
+          <span><b id="statComments">0</b> 条评论</span>
+        </div>
+      </div>
+      <div class="hero-vline" aria-hidden="true"></div>
+    </section>
+
+    <section class="library">
+      <header class="lib-head">
+        <div class="lib-title-wrap">
+          <h2 id="libTitle">曲库</h2>
+          <span class="lib-count" id="libCount"></span>
+        </div>
+        <div class="lib-tools">
+          <label class="search">
+            <svg class="ic" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+            <input id="searchInput" type="search" placeholder="搜索曲名 / 歌手" autocomplete="off">
+          </label>
+          <div class="seg" id="filters">
+            <button class="is-active" data-filter="all" type="button">全部</button>
+            <button data-filter="mine" type="button">我的上传</button>
+            <button data-filter="favs" type="button">收藏</button>
+          </div>
+        </div>
+      </header>
+      <div class="track-list" id="trackList"></div>
+    </section>
+
+    <p class="stage-foot">ℒone། Besidℓ — 私人歌单，安静播放。</p>
+  </main>
+
+  <aside class="now" id="nowPanel" aria-label="正在播放">
+    <div class="now-head">
+      <span class="now-label">正在播放</span>
+      <button class="icon-btn now-close" id="nowClose" type="button" aria-label="收起字幕面板">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <div class="now-cover cover" id="nowCover">
+      <span class="vline"></span>
+      <span class="gl" id="nowGlyph">ℒ</span>
+    </div>
+
+    <div class="now-info">
+      <h3 id="nowTitle">还没有选中歌曲</h3>
+      <p id="nowArtist">从左侧曲库挑一首，或上传你自己的歌</p>
+    </div>
+
+    <div class="lyrics-wrap">
+      <div class="lyrics" id="lyrics">
+        <div class="lyrics-empty">
+          <svg class="ic" viewBox="0 0 24 24"><use href="#i-lines"/></svg>
+          <p>播放时，字幕会在这里逐句亮起。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="now-actions">
+      <button class="pill-action" id="btnLike" type="button" aria-label="点赞">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-heart"/></svg>
+        <span id="likeCount">0</span>
+      </button>
+      <button class="pill-action" id="btnFav" type="button" aria-label="收藏">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-bookmark"/></svg>
+        <span>收藏</span>
+      </button>
+      <button class="pill-action" id="btnEditLyric" type="button" aria-label="编辑字幕">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-edit"/></svg>
+        <span>字幕</span>
+      </button>
+      <button class="pill-action" id="btnDownload" type="button" aria-label="下载">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-download"/></svg>
+        <span>下载</span>
+      </button>
+    </div>
+
+    <section class="comments">
+      <div class="comments-head">
+        <h4>留言 <span id="commentCount">0</span></h4>
+        <span class="comments-hint">只说给这首歌听</span>
+      </div>
+      <div class="comment-list" id="commentList"></div>
+      <form class="comment-form" id="commentForm">
+        <div class="me-dot small">Y</div>
+        <input id="commentInput" type="text" maxlength="140" placeholder="说点什么…" autocomplete="off">
+        <button type="submit">发送</button>
+      </form>
+    </section>
+  </aside>
+</div>
+
+<footer class="player">
+  <div class="mini">
+    <div class="mini-cover cover" id="miniCover">
+      <span class="vline"></span>
+      <span class="gl" id="miniGlyph">ℒ</span>
+    </div>
+    <div class="mini-meta">
+      <div class="mini-title" id="miniTitle">未播放</div>
+      <div class="mini-artist" id="miniArtist">ℒone། Besidℓ</div>
+    </div>
+  </div>
+
+  <div class="p-center">
+    <div class="controls">
+      <button class="ctrl" id="btnPrev" type="button" aria-label="上一首">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-prev"/></svg>
+      </button>
+      <button class="ctrl-play" id="btnPlay" type="button" aria-label="播放">
+        <svg class="ic" id="playIcon" viewBox="0 0 24 24"><use href="#i-play"/></svg>
+      </button>
+      <button class="ctrl" id="btnNext" type="button" aria-label="下一首">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-next"/></svg>
+      </button>
+    </div>
+    <div class="seek-row">
+      <span class="t" id="curTime">0:00</span>
+      <div class="seek" id="seek">
+        <div class="wave base" id="waveBase"></div>
+        <div class="wave fill" id="waveFill"></div>
+      </div>
+      <span class="t" id="durTime">0:00</span>
+    </div>
+  </div>
+
+  <div class="p-right">
+    <button class="lyric-toggle" id="lyricToggle" type="button" title="歌词 / 字幕">
+      <svg class="ic" viewBox="0 0 24 24"><use href="#i-lines"/></svg>
+      <span>字幕</span>
+    </button>
+    <div class="volume">
+      <svg class="ic" viewBox="0 0 24 24"><use href="#i-volume"/></svg>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="音量">
+    </div>
+  </div>
+</footer>
+
+<input type="file" id="fileInput" accept="audio/*" multiple hidden>
+
+<div class="modal" id="lyricModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="lyricModalTitle">
+    <header class="modal-head">
+      <h3 id="lyricModalTitle">编辑字幕</h3>
+      <button class="icon-btn" type="button" data-close aria-label="关闭">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-close"/></svg>
+      </button>
+    </header>
+    <p class="modal-hint">支持 LRC 时间轴，如 <code>[00:12.50] 歌词</code>；也可以每行一句，系统会按歌曲时长自动对齐。</p>
+    <textarea id="lyricInput" spellcheck="false" placeholder="[00:01.00] 镜子的另一边，你与我并肩&#10;[00:05.00] Mirror, breathing at my side"></textarea>
+    <footer class="modal-foot">
+      <button class="btn btn-ghost" type="button" data-close>取消</button>
+      <button class="btn btn-primary" id="lyricSave" type="button">保存字幕</button>
+    </footer>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<audio id="audio" preload="metadata"></audio>
+<script src="app.js"></script>
+</body>
+</html>
